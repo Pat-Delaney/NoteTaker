@@ -26,7 +26,7 @@ router.use(express.json())
 router.get("/notes", (req, res)=>{
     console.info(`${req.method} request to get Notes`);
 
-  readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+  readFromFile('./public/db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 router.post("/notes",(req,res)=>{
@@ -41,7 +41,7 @@ router.post("/notes",(req,res)=>{
         id: uniqid(),
       };
   
-      readAndAppend(newNote, '../db/db.json');
+      readAndAppend(newNote, './public/db/db.json');
       res.json(`Note added with id ${newNote.id}`);
     } else {
       res.error('Error in adding note');
